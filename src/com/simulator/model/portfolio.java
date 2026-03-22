@@ -13,7 +13,7 @@ public class portfolio {
     private Map<String,Integer> holdings = new HashMap<>();
     private List<transaction> history = new ArrayList<>();
 
-    portfolio(double startingCash) {
+    public portfolio(double startingCash) {
         this.cashBalance = startingCash;
     }
 
@@ -44,16 +44,16 @@ public class portfolio {
         }
 
     }
-    double getCashBalance() {
+    public double getCashBalance() {
         return cashBalance;
     }
-    List<transaction> getHistory() {
+    public List<transaction> getHistory() {
         return new ArrayList<>(history) ;
     }
-    Map<String, Integer> getHoldings() {
+    public Map<String, Integer> getHoldings() {
         return new HashMap<>(holdings);
     }
-    double getTotalValue(Map<String, Double> livePrices) {
+    public double getTotalValue(Map<String, Double> livePrices) {
         double sum = 0;
         for(String ticker: holdings.keySet()){
             int quantity = holdings.get(ticker);

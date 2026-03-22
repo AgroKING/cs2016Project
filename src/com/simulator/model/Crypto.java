@@ -5,7 +5,7 @@ import java.util.Random;
 public class Crypto extends Asset {
     private Random random = new Random();
     // constructor for super
-    Crypto(String ticker,String name,double iniPrice) {
+    public Crypto(String ticker,String name,double iniPrice) {
         super(ticker, name, iniPrice);
 
     }
