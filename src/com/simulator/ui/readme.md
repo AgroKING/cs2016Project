@@ -1,6 +1,6 @@
-# `ui/` Package — Person B's Workspace
+# `ui/` Package 
 
-> This folder is **Person B's territory**. Person A has set up the backend classes you'll depend on. This README explains what's available and how to wire everything together.
+> This README explains what's available and how to wire everything together.
 
 ---
 
@@ -78,7 +78,3 @@ SwingUtilities.invokeLater(() -> {
 9. Add a window close listener that calls `priceEngine.stop()`
 
 ---
-
-## Questions?
-
-Reach out to Person A if any method signature doesn't match what you expect — the backend API is final once both sides agree on it.
