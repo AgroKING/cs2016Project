@@ -22,6 +22,7 @@ public class Main {
             market.addAsset("AAPL", new Stock("AAPL", "Apple Inc.", 150.0));
             market.addAsset("BTC", new Crypto("BTC", "Bitcoin", 63000.0));
             market.addAsset("TSLA", new Stock("TSLA", "Tesla", 245.0));
+            market.addAsset("GOOG", new Stock("GOOG", "Google", 339.40));
 
             CSVRepository csvRepo = new CSVRepository();
 
