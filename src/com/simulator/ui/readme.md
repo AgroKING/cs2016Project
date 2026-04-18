@@ -19,7 +19,7 @@ You also own **`Main.java`** (in the parent `com.simulator` package) — the app
 
 ---
 
-## Backend Classes Available to You
+## Backend Classes Available
 
 ### `com.simulator.observer.PriceObserver`
 The shared interface. Your panels implement this to receive live price updates.
