@@ -11,7 +11,7 @@ public class MainFrame extends JFrame {
     private ChartPanel chartPanel;
     private TradePanel tradePanel;
     private LedgerPanel ledgerPanel;
-    private PortfolioSummaryPanel portfolioSummaryPanel;
+    private HoldingsPanel holdingsPanel;
 
     public MainFrame(portfolio p, TradeService ts) {
         setTitle("Market Simulator");
@@ -22,14 +22,14 @@ public class MainFrame extends JFrame {
         chartPanel = new ChartPanel();
         tradePanel = new TradePanel(p, ts);
         ledgerPanel = new LedgerPanel(p);
-        portfolioSummaryPanel = new PortfolioSummaryPanel(p);
+        holdingsPanel = new HoldingsPanel(p);
 
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.add(tickerPanel, BorderLayout.NORTH);
         topPanel.add(tradePanel, BorderLayout.SOUTH);
 
         JPanel eastPanel = new JPanel(new BorderLayout());
-        eastPanel.add(portfolioSummaryPanel, BorderLayout.NORTH);
+        eastPanel.add(holdingsPanel, BorderLayout.NORTH);
         eastPanel.add(ledgerPanel, BorderLayout.CENTER);
 
         add(topPanel, BorderLayout.NORTH);
@@ -44,5 +44,5 @@ public class MainFrame extends JFrame {
     public ChartPanel getChartPanel() { return chartPanel; }
     public TradePanel getTradePanel() { return tradePanel; }
     public LedgerPanel getLedgerPanel() { return ledgerPanel; }
-    public PortfolioSummaryPanel getPortfolioSummaryPanel() { return portfolioSummaryPanel; }
+    public HoldingsPanel getHoldingsPanel() { return holdingsPanel; }
 }
