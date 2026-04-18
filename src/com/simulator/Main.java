@@ -17,12 +17,12 @@ public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             portfolio p = new portfolio(100000.0); // 1. Create Portfolio
-            
+
             MarketSubject market = new MarketSubject();
             market.addAsset("AAPL", new Stock("AAPL", "Apple Inc.", 150.0));
             market.addAsset("BTC", new Crypto("BTC", "Bitcoin", 63000.0));
             market.addAsset("TSLA", new Stock("TSLA", "Tesla", 245.0));
-            
+
             CSVRepository csvRepo = new CSVRepository();
 
             // Restore portfolio state from saved transactions
@@ -37,26 +37,25 @@ public class Main {
 
             TradeService tradeService = new TradeService(p, csvRepo);
 
-            
             MainFrame mainFrame = new MainFrame(p, tradeService);
-            
+
             market.registerObserver(mainFrame.getTickerPanel());
             market.registerObserver(mainFrame.getChartPanel());
             market.registerObserver(mainFrame.getTradePanel());
             market.registerObserver(mainFrame.getLedgerPanel());
-            market.registerObserver(mainFrame.getPortfolioSummaryPanel());
+            market.registerObserver(mainFrame.getHoldingsPanel()); // 3B: swapped to HoldingsPanel
 
             mainFrame.setVisible(true);
 
             PriceEngine engine = new PriceEngine(market);
-            
+
             mainFrame.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                     engine.stop();
                 }
             });
-            
+
             engine.start();
         });
     }
