@@ -5,6 +5,8 @@ import com.simulator.engine.PriceEngine;
 import com.simulator.model.Crypto;
 import com.simulator.model.Stock;
 import com.simulator.model.portfolio;
+import com.simulator.model.transaction;
+import com.simulator.model.Side;
 import com.simulator.persistence.CSVRepository;
 import com.simulator.service.TradeService;
 import com.simulator.ui.MainFrame;
@@ -22,7 +24,19 @@ public class Main {
             market.addAsset("TSLA", new Stock("TSLA", "Tesla", 245.0));
             
             CSVRepository csvRepo = new CSVRepository();
+
+            // Restore portfolio state from saved transactions
+            for (transaction t : csvRepo.loadTransaction()) {
+                if (t.getSide() == Side.BUY) {
+                    p.buy(t.getTicker(), t.getQuantity(), t.getPricePerUnit());
+                } else {
+                    p.sell(t.getTicker(), t.getQuantity(), t.getPricePerUnit());
+                }
+            }
+            System.out.println("Restored " + p.getHistory().size() + " trades from transactions.csv");
+
             TradeService tradeService = new TradeService(p, csvRepo);
+
             
             MainFrame mainFrame = new MainFrame(p, tradeService);
             
